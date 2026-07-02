@@ -1,4 +1,4 @@
-# ❖ ResearchMate — AI-Powered Research Paper Analyzer & RAG Chatbot
+# ResearchMate — AI-Powered Research Paper Analyzer & RAG Chatbot
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Flask](https://img.shields.io/badge/Flask-Web%20Framework-lightgrey)
