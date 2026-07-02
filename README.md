@@ -23,6 +23,36 @@
 * **Document Processing:** PyMuPDF (`fitz`), PyPDF2
 * **Frontend:** HTML, CSS, JavaScript (via Flask Templates)
 
+### System Architecture
+
+```mermaid
+flowchart TB
+    User((User)) -->|Uploads PDF & Prompts| Frontend[Flask Frontend]
+
+    subgraph Backend [Flask Backend Server]
+        Frontend -->|PDF File| Parser[PDF Parser\nPyMuPDF / PyPDF2]
+        Parser -->|Raw Text| Splitter[Section Splitter\nRegex-based]
+        
+        Frontend -->|Chat Query| RAGChain[LangChain RAG Pipeline]
+        Frontend -->|Topic Selection| SumChain[Summarization Pipeline]
+    end
+
+    subgraph Vector_Search [Vector Storage & Retrieval]
+        Parser -->|Text Chunks| Embedder[HuggingFace Embeddings]
+        Embedder -->|Vectors| DB[(FAISS Vector DB)]
+        RAGChain <-->|Semantic Search| DB
+    end
+
+    subgraph LLM_Layer [Provider-Agnostic LLM]
+        RAGChain -->|Context + Query| LLM[LLM\nGroq / OpenAI API]
+        SumChain -->|Section Text| LLM
+        Splitter -.->|Parsed Sections| SumChain
+    end
+    
+    LLM -->|Generated Response| Frontend
+```
+
+
 ## 🚀 Getting Started
 
 ### Prerequisites
