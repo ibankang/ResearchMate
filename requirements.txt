@@ -11,7 +11,7 @@ langchain-text-splitters==0.3.11
 langsmith==0.4.31
 PyMuPDF==1.26.4
 PyPDF2==3.0.1
-faiss-cpu==1.10.0
+faiss-cpu==1.15.0
 sentence-transformers==5.1.1
 transformers==4.56.2
 torch==2.2.2
