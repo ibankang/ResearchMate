@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+uploads/
+paper.pdf
+extracted_sections.json
+refined_sections.json
+section_with_content.json
